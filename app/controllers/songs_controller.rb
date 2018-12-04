@@ -54,12 +54,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name, :genre_name, note_contents: [])
   end
 end
-#
-# "song"=>
-#   {"title"=>"song19",
-#    "artist_name"=>"artist19",
-#    "genre_id"=>"50",
-#    "note_ids"=>["note3", "note4"]},
-#  "commit"=>"Create Song",
-#  "controller"=>"songs",
-#  "action"=>"create"}
