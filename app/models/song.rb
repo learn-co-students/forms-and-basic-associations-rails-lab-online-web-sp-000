@@ -12,17 +12,27 @@ class Song < ActiveRecord::Base
    end
 
    def artist_name=(name)
-     self.artist = Artist.find_by(name: name)
+     self.artist = Artist.find_or_create_by(name: name)
    end
 
    def artist_name
-     self.artist ? self.artist.name : nil
+     self.artist.name if !!self.artist
    end
 
-   def note_ids=(notes)
-     notes.each do |note|
-       new_note = Note.new(content: note)
-       self.notes << new_note
+   def note_contents=(contents)
+     contents.each do |content|
+       note = Note.find_or_create_by(content: content)
+       self.notes << note if note.content != ""
      end
    end
+
+   def note_contents
+     self.notes.collect{|note| note.content}
+   end
+
+    def note_ids=(ids)
+      notes.each do |note|
+        self.notes.build(content: note) if !note.empty?
+      end
+    end
 end
