@@ -18,4 +18,17 @@ class Song < ActiveRecord::Base
   def genre_name
     self.genre ? self.genre.name : nil
   end
+
+  def note_contents=(notes)
+    notes.each do |note|
+      if !note.empty?
+        new_note = self.notes.build(content: note)
+        new_note.save
+      end
+    end
+  end
+
+  def note_contents
+    self.notes.map {|n| n.content}
+  end
 end
