@@ -4,7 +4,19 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br />
+  <%= f.label :artist_name %>
 
+  <!-- artist_name is converted to id through model method -->
+  <%= f.text_field :artist_name %>
+
+  <!-- genres are looked up by id, name is shown in select box -->
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+
+  <!-- array of note contents, note objects created by model -->
+  <input name="song[note_contents][]" id="song_notes_1">
+  <input name="song[note_contents][]" id="song_notes_2">
+  <input name="song[note_contents][]" id="song_notes_3">
+  <input name="song[note_contents][]" id="song_notes_4">
   <%= f.submit %>
 <% end %>
 
