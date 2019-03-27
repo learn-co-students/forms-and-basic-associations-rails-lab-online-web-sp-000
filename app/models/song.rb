@@ -15,21 +15,21 @@ class Song < ApplicationRecord
      self.genre = Genre.find_or_create_by(name: name)
    end
  
-   def genre_name
-      self.genre ? self.genre.name : nil
-   end
+  def genre_name
+    self.genre ? self.genre.name : nil
+  end
 
-   def note_contents=(notes)
-        notes.each do |note|
-          if !note.blank?
-          self.notes << Note.new(content: note) 
-          end
-        end
-   end
-
-   def note_contents 
-      self.notes.collect  do |note|
-        note.content
+ def note_contents=(notes)        
+    notes.each do |note|
+      if !note.blank?
+        self.notes << Note.new(content: note)          
       end
+    end   
+  end
+
+  def note_contents 
+    self.notes.collect  do |note|
+      note.content
+    end
   end
 end
