@@ -9,7 +9,9 @@
 
   <%= f.collection_select :genre_name, Genre.all, :name, :name %>
   
-  <%= f.text_field :genre_name %>
+  <%= f.label :note_contents %>
+  <%= f.text_field :note_contents, id: "song_notes_1", name: "song[note_contents[]" %><br>
+  <%= f.text_field :note_contents, id: "song_notes_2", name: "song[note_contents[]" %><br>
   <%= f.submit %>
 <% end %>
 

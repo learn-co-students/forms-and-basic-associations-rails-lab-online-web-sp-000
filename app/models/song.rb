@@ -1,4 +1,4 @@
-class Song < ActiveRecord::Base
+class Song < ApplicationRecord
   belongs_to :artist
   belongs_to :genre
   has_many :notes
@@ -20,11 +20,16 @@ class Song < ActiveRecord::Base
    end
 
    def note_contents=(notes)
-      self.notes = Note.all
-      
+        notes.each do |note|
+          if !note.blank?
+          self.notes << Note.new(content: note) 
+          end
+        end
    end
 
    def note_contents 
-      self.notes ? self.notes.content : nil
+      self.notes.collect  do |note|
+        note.content
+      end
   end
 end
