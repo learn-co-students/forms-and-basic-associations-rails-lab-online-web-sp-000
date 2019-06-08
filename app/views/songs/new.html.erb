@@ -11,15 +11,21 @@
   <br>
 
   <%= f.label :genre_name %>
-  <%= f.text_field :genre_name %>
+  <%= f.text_field :genre_name, id: 'song_genre_id',  list: "genres_autocomplete" %>
+  <datalist id="genres_autocomplete">
+    <% Genre.all.each do |genre| %>
+      <option value="<%= genre.name %>">
+    <% end %>
+  </datalist>
+
   <br>
 
   <%= f.label :song_notes_1 %>
-  <%= f.text_field :song_notes_1 %>
+  <%= f.text_field :song_notes_1, id: 'song_notes_1'  %>
   <br>
 
   <%= f.label :song_notes_2 %>
-  <%= f.text_field :song_notes_2 %>
+  <%= f.text_field :song_notes_2, id: 'song_notes_2'  %>
   <br>
 
   <%= f.submit %>
