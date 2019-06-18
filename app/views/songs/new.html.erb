@@ -15,5 +15,9 @@
   <h3>Or Add A New Genre</h3>
   <%= f.text_field :genre_name %><br>
   <br>
+  <h3>Add Notes</h3>
+  <input name='song[note_contents][]' id='song_notes_1'>
+  <input name='song[note_contents][]' id='song_notes_2'>
+  <input name='song[note_contents][]' id='song_notes_3'>
   <%= f.submit %>
 <% end %>
