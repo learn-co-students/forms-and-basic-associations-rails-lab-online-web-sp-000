@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
+    binding.pry
     @artist = Artist.new(artist_params)
 
     if @artist.save
