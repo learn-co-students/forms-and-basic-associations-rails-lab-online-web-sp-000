@@ -11,6 +11,7 @@ class Song < ActiveRecord::Base
     self.try(:artist).try(:name)
   end
 
+  #Genre Helpers
   def genre_name=(genre_name)
     self.genre = Genre.find_or_create_by(name: genre_name)
   end
