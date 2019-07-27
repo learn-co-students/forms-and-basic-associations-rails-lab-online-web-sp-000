@@ -9,6 +9,14 @@ class Song < ActiveRecord::Base
   end
 
   def artist_name
-     self.artist ? self.artist.name : nil
+    self.artist ? self.artist.name : nil
+  end
+
+  def song_genre_id=(id)
+    self.genre = Genre.find_by(id)
+  end
+
+  def song_genre_id
+    self.genre ? self.genre.id : nil
   end
 end
