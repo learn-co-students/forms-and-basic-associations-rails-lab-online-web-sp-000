@@ -22,7 +22,29 @@ class Song < ActiveRecord::Base
 
   def notes=(notes_array)
     notes_array.each do |note|
-      self.notes = note
+      self.notes << Note.create(content: note)
     end
+  end
+
+  def note_contents=(contents)
+    contents.each do |note|
+      if note != ""
+        self.notes << Note.create(content: note)
+      end
+    end
+  end
+
+  def note_contents
+    self.notes.collect do |note|
+      note.content
+    end
+  end
+
+  def genre_name=(name)
+    self.genre = Genre.find_or_create_by(name: name)
+  end
+
+  def genre_name
+    self.genre.name
   end
 end
