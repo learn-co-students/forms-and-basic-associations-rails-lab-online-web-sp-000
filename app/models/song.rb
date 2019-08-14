@@ -25,18 +25,17 @@ def artist_name
 end
 
 
-
-
-
-def note_contents=(content)
-#  binding.pry
-all_notes =[]
-  self.notes.each do |id|
-    note = Note.find(id)
-    all_notes << note
+def note_contents=(notes)
+  notes.each do |content|
+    if content.strip != ''
+      self.notes.build(content: content)
+    end
   end
 end
 
 def note_contents
-   self.note ? self.note.content : nil
+  self.notes.map(&:content)
+end
+
+
 end
