@@ -1,3 +1,4 @@
+
 class SongsController < ApplicationController
   def index
     @songs = Song.all
@@ -12,7 +13,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params)
+    @song = Song.new(song_params(params[:song].keys))
 
     if @song.save
       redirect_to @song
@@ -46,8 +47,9 @@ class SongsController < ApplicationController
 
   private
 
-  def song_params
-    params.require(:song).permit(:title)
+  def song_params(*args)
+    params.require(:song).permit(*args, :note_contents, note_contents: [])
   end
+
 end
 
