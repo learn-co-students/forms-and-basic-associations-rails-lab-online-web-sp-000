@@ -12,7 +12,7 @@ class Song < ActiveRecord::Base
   end
 
   def genre_name
-    self.genre? self.genre.name:nil
+    self.genre ? self.genre.name : nil
   end
 
   def artist_name=(name)
@@ -20,16 +20,18 @@ class Song < ActiveRecord::Base
   end
 
   def artist_name
-    self.artist.name
+    self.artist ? self.artist.name : nil
   end
 
   def note_contents
-    self.notes
+    self.notes.collect {|n|n.content}
   end
 
-  def note_contents=(notes)
+  def note_contents= (notes)
     notes.each do |n|
-      self.notes<<n
+      unless n.empty?
+        self.notes<<Note.create(content: n)
+      end
     end
   end
 
