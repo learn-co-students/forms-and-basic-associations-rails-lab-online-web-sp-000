@@ -1,9 +1,9 @@
 module Findable
-  def find_or_create_by(name: the_name)
-    if self.all.find{|s|s.name==the_name}
-      self.all.find{|s|s.name==the_name}
+  def find_or_create_by(hash)
+    if self.all.find{|s|s.name==hash[:name]}
+      self.all.find{|s|s.name==hash[:name]}
     else
-      self.create(name: the_name)
+      self.create(hash)
     end
   end
 end
