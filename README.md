@@ -18,9 +18,7 @@ In this lab, we're going to make a song library. Our data model looks like this:
   - belongs to a `Genre`
 - `Genre`
   - has a `name` (string)
-  - has many `songs`
-- `Note`
-  - has `content` (string)
+  - has many `songs`3
   - belongs to a `Song`
 
 ## Instructions
