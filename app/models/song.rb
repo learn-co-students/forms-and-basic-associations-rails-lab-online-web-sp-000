@@ -3,10 +3,12 @@ class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
   has_many :notes
-end
+
 
 def artist_name
-  self.artist.name
+  if self.artist != nil
+    self.artist.name
+  end
 end
 
 def artist_name=(name)
@@ -14,25 +16,28 @@ def artist_name=(name)
 end
 
 def genre_name
+  if self.genre != nil
   self.genre.name
+  end
 end
 
 def genre_name=(name)
   self.genre = Genre.find_or_create_by(name: name)
-  self.genre_id = genre.id
+  #self.genre_id = genre.id
   self.save
 end
 
-def notes_contents
+def note_contents
   self.notes.map(&:content)
 end
 
-def notes_contents=(notes)
+def note_contents=(notes)
   notes.each do |content|
     if content.strip != ''
       self.notes.build(content: content)
     end
   end
+end
 end
 
 
