@@ -8,6 +8,10 @@
 
 # ID3 tag music genres are surprisingly specific.
 
+artist = Artist.create(name: "lauren")
+song = Song.create(title: "lalala")
+note = Note.create(content: ["note1", "one composer", "2:34 seconds long"])
+
 genres = Hash[[
   "Blues",
   "Classic Rock",
