@@ -1,4 +1,4 @@
 class Note < ActiveRecord::Base
   # add associations here
-  beongs_to :song
+  belongs_to :song
 end

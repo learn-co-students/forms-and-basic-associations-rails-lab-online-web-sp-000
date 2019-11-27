@@ -5,15 +5,11 @@
   <%= f.text_field :title %><br>
   <%= f.label :artist_name %>
   <%= f.text_field :artist_name %>
-  <%= f.label :genre_name %>
-  <%= f.collection_select :genre_id, Genre.all.order(:name), :id, :name  %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name  %>
 
+  <input id="song_notes_attributes_0_content" name="song[note_contents][]">
+  <input id="song_notes_attributes_1_content" name="song[note_contents][]">
+  <input id="song_notes_attributes_2_content" name="song[note_contents][]">
 
-  # <select name="song[genre_id]" id="genre_id">
-  #   <option value="">Please select</option>
-  #   <% @genres.each do |genre| %>
-  #     <option value="<%= genre.id %>"><%= genre.name %></option>
-  #   <% end %>
-  # </select>
   <%= f.submit %>
 <% end %>
