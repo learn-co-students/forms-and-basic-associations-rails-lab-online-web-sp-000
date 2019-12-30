@@ -11,19 +11,25 @@ end
 def artist_name
    self.artist ? self.artist.name : nil
 end
-def genre_name=(name)
-  self.genre = Genre.find_or_create_by(name: name)
-end
+#def genre_name=(name)
+#  self.genre = Genre.find_or_create_by(name: name)
+#end
+#
+#def genre_name
+#   self.genre ? self.genre.name : nil
+#end
 
-def genre_name
-   self.genre ? self.genre.name : nil
-end
-
-def notes_ids=(ids)
-  ids.each do |id|
-    note = Note.find(id)
+def note_content=(array)
+  array.each do |content|
+    note = Note.find_or_create_by(content: content)
     self.notes << note
   end
 end
+
+def note_content
+   self.note ? self.note.content : nil
+end
+
+
 
 end
