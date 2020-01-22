@@ -16,14 +16,6 @@ class Song < ActiveRecord::Base
     self.genre.name
   end
 
-  def 
-    notes_ids=(ids)
-    ids.each do |id|
-      note = Note.find(id)
-      self.notes << note
-    end
-  end
-
   def note_contents=(contents)
     contents.each do |c|
       if !c.empty?
