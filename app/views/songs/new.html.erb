@@ -13,14 +13,16 @@
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   <br />
 
-  <%= f.label :notes %>
-  <%= f.text_field :notes, list: "notes_autocomplete" %>
-  <datalist id="notes_autocomplete">
-    <% Note.all.each do |note| %>
-      <option value="<%= note.content %>">
+  Notes:
+  <ul>
+    <%= f.fields_for :notes do |notes_form| %>
+     <li>
+       <%= notes_form.label :content %>
+       <%= notes_form.text_field :content %>
+     </li>
     <% end %>
-  </datalist>
-  <br />
+    <br />
+  </ul>
   <%= f.submit %>
 <% end %>
 
