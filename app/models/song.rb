@@ -12,4 +12,11 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil
   end
 
+  def note_contents=(array)
+    
+    self.notes << Note.create!(content: array[0])
+    self.notes << Note.create!(content: array[1])
+    self.save
+  end
+
 end
