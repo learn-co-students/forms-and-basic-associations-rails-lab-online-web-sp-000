@@ -3,7 +3,7 @@ class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
   has_many :notes
-#   accepts_nested_attributes_for :notes
+  #   accepts_nested_attributes_for :notes
 
   def artist_name
     defined?(artist) ? artist&.name : nil
@@ -17,11 +17,12 @@ class Song < ActiveRecord::Base
     # binding.pry
     contents.each do |c|
       next if c.empty?
-      self.notes << Note.create(content: content, song_id: self.id)
+
+      notes << Note.create(content: content, song_id: id)
     end
   end
 
   def note_contents
-    self.notes.map { |note| note.content }
+    notes.map { |note| note.content }
   end
 end
