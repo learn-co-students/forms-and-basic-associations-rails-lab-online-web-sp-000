@@ -35,6 +35,7 @@ describe 'the song form', type: :feature do
     fill_in :song_notes_attributes_0_content, with: 'great piano'
     fill_in :song_notes_attributes_1_content, with: 'inaccurate seismology'
     find('input[name="commit"]').click
+    # binding.pry
     expect(Song.last.notes.map(&:content)).to eq ['great piano', 'inaccurate seismology']
   end
 end
