@@ -14,7 +14,15 @@ class Song < ActiveRecord::Base
   end
 
   def note_contents=(contents)
-    binding.pry
+    # binding.pry
+    contents.each do |c|
+      next if c.empty?
+      self.notes << Note.create(content: content, song_id: self.id)
+    end
+  end
+
+  def note_contents
+    self.notes.map { |note| note.content }
   end
 
 end
