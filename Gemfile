@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development do
-  gem 'pry'
 # Access an IRB console on exception pages or by using <%= console %> in views
 end
 
