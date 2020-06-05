@@ -14,7 +14,6 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     params[:song][:notes].each { |note| @song.notes << Note.create(content: note) }
-    byebug
     if @song.save
       redirect_to @song
     else
