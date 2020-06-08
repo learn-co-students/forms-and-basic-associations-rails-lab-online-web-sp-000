@@ -1,10 +1,22 @@
+<%# This view should have a form that provides:
+  - A text input box that sets the `Song`'s title.
+  - A text input box for the `Artist`.
+  - A selection box for `Genre`. Users should be able to 
+    pick amongst existing genres only.
+  - Several text input boxes to add notes to the song. %>
+
 <h1>Create a Song</h1>
 
 <%= form_for @song  do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br />
-
+  <%= f.label :artist_name %>
+  <%= f.text_field :artist_name %>
+  <br />
+  <%= f.label :genre %>
+  <%= f.collection_select :genre_name, Genre.all, :name, :name %>
+  <br />
   <%= f.submit %>
 <% end %>
 
