@@ -20,9 +20,9 @@
     <%= f.fields_for :notes do |note| %> 
       <%= note.label :content %>
       <%= note.text_field :content %> 
-    <br />
-      <%= note.label :content %> 
-      <%= note.text_field :content %> 
-  <% end %> 
+      <br />
+      <%# <%= note.label :content %> 
+      <%# <%= note.text_field :content %>  
+  <% end %>
   <%= f.submit %>
 <% end %>
