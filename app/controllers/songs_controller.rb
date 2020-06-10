@@ -5,10 +5,12 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    @song.notes.build(content: 'great piano')
   end
 
   def new
     @song = Song.new
+
   end
 
   def create
@@ -47,8 +49,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title, :artist_name, :genre_id,
-                                 notes_attributes:)
+    params.require(:song).permit(:title, :artist_name, :genre_id, notes_attributes: [])
   end
 end
 
