@@ -37,3 +37,4 @@ describe "the song form", :type => :feature do
     expect(Song.last.notes.map(&:content)).to eq ['great piano', 'inaccurate seismology']
   end
 end
+
