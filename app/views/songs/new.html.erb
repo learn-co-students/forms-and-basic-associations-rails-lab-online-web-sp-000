@@ -9,8 +9,11 @@
   <br />
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   <textarea name="song[note_contents][] id="song_notes_1"></textarea>
-  <textarea name="song[note_contents][] id="song_notes_2"></textarea>
-  <%= f.submit %>
+<textarea name="song[note_contents][] id="song_notes_2"></textarea>
+<%= f.submit %>
 <% end %>
+
+
+
 
 
