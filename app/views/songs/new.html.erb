@@ -4,7 +4,8 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br/>
-  <%= f.label :artist_name %>
+  <%= f.label :song_artist_name %>
+  <%= f.text_field @song.artist.name if @song.artist %>
   <%= f.submit %>
 <% end %>
 
