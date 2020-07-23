@@ -22,7 +22,7 @@ class Song < ActiveRecord::Base
 
   def notes=(ids)
     ids.each do |id|
-      note = Note.find_or_create_by(id: id)
+      note = Note.find_or_create_by(ids: id)
       self.notes << note
     end
   end
