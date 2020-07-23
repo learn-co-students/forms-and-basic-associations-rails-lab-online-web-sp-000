@@ -4,11 +4,26 @@ class Song < ActiveRecord::Base
   belongs_to :genre
   has_many :notes
 
-  def song_name=(name)
-    self.song = Song.find_or_create_by(name: name)
+  def genre_name=(name)
+    self.genre = Genre.find_or_create_by(name: name)
   end
 
-  def song_name
-     self.song ? self.song.name : nil
+  def genre_name
+     self.genre ? self.genre.name : nil
+  end
+
+  def artist_name=(name)
+    self.artist = Artist.find_or_create_by(name: name)
+  end
+
+  def artist_name
+    self.artist ? self.artist.name : nil
+ end
+
+  def notes=(ids)
+    ids.each do |id|
+      note = Note.find_or_create_by(id: id)
+      self.notes << note
+    end
   end
 end
