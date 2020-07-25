@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
 # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'byebug'
+  gem 'pry'
 end
 
 
@@ -46,3 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'capybara'
 end
+
+  group :production do
+    gem 'pry'
+  end 
