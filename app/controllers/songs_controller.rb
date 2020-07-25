@@ -12,12 +12,15 @@ class SongsController < ApplicationController
   end
 
   def create
+    
+    @artist = Artist.find_or_create_by(name: song_params[:artist_name]) 
     @song = Song.new(song_params)
-
+    @note = Note.find_or_create_by(content: song_params[:notes_contents])
+    
     if @song.save
       redirect_to @song
     else
-      render :new
+      redirect_to "/new"
     end
   end
 
@@ -47,7 +50,8 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:title, :artist_name, :genre_id, notes_contents: [])
   end
 end
 
+##notes_contents= method will not work. Notes are being created correctly, just not persisting to the method in the model class
