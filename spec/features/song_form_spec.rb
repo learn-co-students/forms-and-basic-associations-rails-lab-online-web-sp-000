@@ -1,15 +1,15 @@
 require 'rails_helper'
 require 'capybara/rspec'
 
-describe "the song form", :type => :feature do
-  it "creates a song on submit" do
+describe 'the song form', type: :feature do
+  it 'creates a song on submit' do
     visit '/songs/new'
     fill_in :song_title, with: 'Little Earthquakes'
     find('input[name="commit"]').click
     expect(Song.last.title).to eq 'Little Earthquakes'
   end
 
-  it "creates a song with an artist" do
+  it 'creates a song with an artist' do
     visit '/songs/new'
     fill_in :song_title, with: 'Little Earthquakes'
     fill_in :song_artist_name, with: 'Tori Amos'
@@ -24,6 +24,7 @@ describe "the song form", :type => :feature do
     fill_in :song_title, with: 'Little Earthquakes'
     select 'Alternative', from: :song_genre_id
     find('input[name="commit"]').click
+    # binding.pry
     expect(Song.last.genre.name).to eq 'Alternative'
     expect(Genre.find_by(name: 'Alternative').songs.pluck(:title)).to include 'Little Earthquakes'
   end
@@ -34,6 +35,7 @@ describe "the song form", :type => :feature do
     fill_in :song_notes_1, with: 'great piano'
     fill_in :song_notes_2, with: 'inaccurate seismology'
     find('input[name="commit"]').click
+    # binding.pry
     expect(Song.last.notes.map(&:content)).to eq ['great piano', 'inaccurate seismology']
   end
 end

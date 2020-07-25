@@ -4,6 +4,7 @@ class SongsController < ApplicationController
   end
 
   def show
+    # binding.pry
     @song = Song.find(params[:id])
   end
 
@@ -12,8 +13,9 @@ class SongsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @song = Song.new(song_params)
-
+    # binding.pry
     if @song.save
       redirect_to @song
     else
@@ -40,14 +42,14 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
-    flash[:notice] = "Song deleted."
+    flash[:notice] = 'Song deleted.'
     redirect_to songs_path
   end
 
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    # binding.pry
+    params.require(:song).permit(:title, :artist_name, :genre_id, note_contents: [])
   end
 end
-
