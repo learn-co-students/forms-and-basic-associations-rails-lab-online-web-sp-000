@@ -20,10 +20,15 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil
  end
 
-  def notes=(ids)
-    ids.each do |id|
-      note = Note.find_or_create_by(ids: id)
-      self.notes << note
-    end
+  def notes_ids=(ids)
+    # binding.pry
+    # if !ids.all?("")
+    #   binding.pry
+      ids.each do |id|
+        binding.pry
+        note = Note.find(id)
+        self.notes << note
+      end
+    # end
   end
 end
