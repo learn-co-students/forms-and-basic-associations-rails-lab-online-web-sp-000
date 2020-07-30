@@ -20,4 +20,11 @@ class Song < ActiveRecord::Base
   def genre_name
     self.genre ? self.genre.name : nil
   end
+
+  def notes_attributes=(notes)
+
+    notes.each do |note|
+      self.notes << Note.new(content: note)
+    end
+  end
 end

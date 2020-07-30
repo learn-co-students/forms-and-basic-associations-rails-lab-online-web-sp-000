@@ -15,17 +15,19 @@ class SongsController < ApplicationController
     #binding.pry
     
     #binding.pry
-    if song_params[:notes][0] == ""
-      @song = Song.new(params.require(:song).permit(:title, :artist_name, :genre_id))
-      #binding.pry
-    else
-      #binding.pry
-      @song = Song.new(params.require(:song).permit(:title, :artist_name, :genre_id))
-      @note1 = Note.new(content: song_params[:notes][0])
-      @note2 = Note.new(content: song_params[:notes][1])
-      @song.notes << @note1
-      @song.notes << @note2
-    end
+    @song = Song.new(song_params)
+    #binding.pry
+    # if song_params[:notes_attributes][0] == ""
+    #   @song = Song.new(params.require(:song).permit(:title, :artist_name, :genre_id))
+    #   #binding.pry
+    # else
+    #   #binding.pry
+    #   @song = Song.new(params.require(:song).permit(:title, :artist_name, :genre_id, :notes_attributes))
+    #   # @note1 = Note.new(content: song_params[:notes][0])
+    #   # @note2 = Note.new(content: song_params[:notes][1])
+    #   # @song.notes << @note1
+    #   # @song.notes << @note2
+    # end
     
 
     if @song.save
@@ -61,7 +63,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title, :artist_name, :genre_id, notes: [])
+    params.require(:song).permit(:title, :artist_name, :genre_id, notes_attributes: [])
   end
 end
 
