@@ -11,6 +11,7 @@ class SongsController < ApplicationController
     @song = Song.new
   end
 
+#can set artist_name on a song
   def create
     @song = Song.new(song_params)
 
@@ -46,8 +47,10 @@ class SongsController < ApplicationController
 
   private
 
+#STRONG PARAMS TO PASS AN ARRAY
+# setting/accepting an artist name instead of an artist id
+#artist_name key in the song_params hash prompts a call to the artist_name method
   def song_params
-    params.require(:song).permit(:title)
+   params.require(:song).permit(:title, :artist_name, :genre_id, :note_contents => [])
   end
 end
-
