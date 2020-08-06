@@ -1,3 +1,3 @@
 class Note < ActiveRecord::Base
-  # add associations here
+  belogns_to :song
 end
