@@ -12,7 +12,8 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params(:title, :artist_name, :genre_id, :notes_id))
+    binding.pry
+    @song = Song.new(song_params(:title, :artist_name, :genre_id, :notes_content))
 
     if @song.save
       redirect_to @song
@@ -28,7 +29,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
 
-    @song.update(song_params(:title, :artist, :genre, :notes_id))
+    @song.update(song_params(:title, :artist_name, :genre_id, :notes_content))
 
     if @song.save
       redirect_to @song
