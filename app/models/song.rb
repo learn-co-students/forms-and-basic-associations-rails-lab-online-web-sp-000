@@ -19,8 +19,11 @@ class Song < ActiveRecord::Base
      self.genre ? self.genre.name : nil
   end
 
-  def notes_content=(content)
-    self.notes = Notes.find_or_create_by(content: content)
+  def notes_content=(contents)
+    filled_contents = contents.reject(&:empty?)
+    filled_contents.map do |n|
+      self.notes.build(content: n)
+    end
   end
 
   def notes_content
