@@ -1,3 +1,4 @@
+require 'pry'
 class SongsController < ApplicationController
   def index
     @songs = Song.all
@@ -12,7 +13,13 @@ class SongsController < ApplicationController
   end
 
   def create
+   
     @song = Song.new(song_params)
+    
+    params[:song][:note_contents].each do |note_content|
+      note = Note.create(content: note_content)
+      @song.notes << note
+    end
 
     if @song.save
       redirect_to @song
@@ -47,7 +54,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:title, :artist_name, :genre_id)
   end
 end
 
