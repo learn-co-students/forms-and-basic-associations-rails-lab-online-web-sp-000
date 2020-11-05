@@ -3,7 +3,20 @@
 <%= form_for @song  do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
-  <br />
+
+  <%= f.label :Artist %>
+  <%= f.text_field :artist_name %>
+
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <!-- f.collection_select / params key name / collection of instances to choose / 
+  what attribute of the instance to save as value of params key / the attribute of the instances you want to display in UI -->
+  <br/>
+
+  <!-- for this one, it looks like we're only using html but rails help us by putting these inputs with the same name attributes in to one array 
+  named post[note_ids]. rails also help us set the id names for the spec test -->
+  <input id="song_notes_1" name="song[notes][]"">
+  <input id="song_notes_2" name="song[notes][]"">
+
 
   <%= f.submit %>
 <% end %>
