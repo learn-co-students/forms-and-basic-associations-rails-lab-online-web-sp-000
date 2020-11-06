@@ -20,7 +20,6 @@ class Song < ActiveRecord::Base
   end
 
   def note_contents=(note_contents)
-    binding.pry
     note_contents.each do |content|
       unless content.empty?
         self.notes << Note.create(content: content)
