@@ -1,3 +1,4 @@
 class Note < ActiveRecord::Base
-  # add associations here
+  # validates :name, presense: true
+  belongs_to :song
 end

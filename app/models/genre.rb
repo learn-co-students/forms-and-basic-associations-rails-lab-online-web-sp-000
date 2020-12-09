@@ -1,3 +1,4 @@
 class Genre < ActiveRecord::Base
-  # add associations
+  # validates :name, presense: true
+  has_many :songs
 end
