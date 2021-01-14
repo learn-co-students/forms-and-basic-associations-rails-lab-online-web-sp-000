@@ -159,4 +159,16 @@ genres = Hash[[
   "Synthpop"
 ].map { |genre| [genre, Genre.find_or_create_by(name: genre)] }]
 
+nsync = Artist.create(name: "Nsync")
+brandy = Artist.create(name: "Brandy")
+monica = Artist.create(name: "Monica")
+whitney = Artist.create(name: "Whitney Houston")
+mariah = Artist.create(name: "Mariah Carey")
 
+@bye3 = nsync.songs.build(title: "Bye Bye Bye")
+@bye3.notes.build(content: ["Uptempo", "Great music video"])
+@bye3.save
+
+@promise = nsync.songs.build(title: "This I Promise You")
+@promise.notes.build(content: ["Slow ballad", "Spanish version available"])
+@promise.save
