@@ -1,3 +1,5 @@
+require 'byebug'
+
 class SongsController < ApplicationController
   def index
     @songs = Song.all
@@ -47,7 +49,14 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:title, :genre_id, :artist_name, :notes_content => []) #Hey this is a hash do the hash thing
+    #Has to be genre_id because we're passing in the genre_id to associate the genre object with the song object
+    
+    #If you pass in to :notes => [] it will look for notes objects
+    #So you have to pass it into a different array variable name and then do the same thing as with the artist_name
+    #Only formatted differently because, array.
+    #(Also with the test fuckery with song_notes_1 and song_notes_2 it turns out to just be easier to mix form_for notation and straight up html)
+    #Yes you can do that without it breaking
   end
 end
 

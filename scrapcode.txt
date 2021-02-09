@@ -1,0 +1,15 @@
+## Try ONE
+  <p><%= f.label :song_notes_1 %>
+  <%= f.text_field :song_notes_1 %></p>
+
+  <p><%= f.label :song_notes_2 %>
+  <%= f.text_field :song_notes_2 %></p>
+
+#<%= f.form-selector-thingie(text_field, text_area, etc) :ID, then a second argument
+
+##TRY TWO 
+<p><%= f.label :notes %>
+  <%= f.text_field :notes[] %></p>
+
+  <p><%= f.label :notes %>
+  <%= f.text_field :notes[] %></p>
