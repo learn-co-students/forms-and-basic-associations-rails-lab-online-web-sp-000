@@ -8,7 +8,16 @@ class Song < ActiveRecord::Base
   end
 
   def artist_name
-    self.artist.name ? self.artist.name : nil
+    self.artist ? self.artist.name : nil
+  end
+
+  def notes=(notes)
+    notes.each do |note|
+      if !note.empty?
+        new_note = Note.create(content: note)
+        self.notes << new_note
+      end
+    end
   end
 
 end
