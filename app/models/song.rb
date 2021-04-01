@@ -1,5 +1,7 @@
 class Song < ActiveRecord::Base
   belongs_to :artist
+  belongs_to :genre
+  has_many :notes
 
 
   def artist_name=(name)
@@ -8,6 +10,18 @@ class Song < ActiveRecord::Base
 
   def artist_name
     self.artist ? self.artist.name : nil
+  end
+
+  def note_contents=(contents)
+    contents.each do |content|
+      if content.strip != ""
+         self.notes.build(content: content)
+      end
+    end
+  end
+
+  def note_contents
+    self.notes.map(&:content)
   end
 
 end
