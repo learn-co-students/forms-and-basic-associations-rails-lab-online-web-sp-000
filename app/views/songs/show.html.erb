@@ -1,3 +1,14 @@
 <h1>Songs#show</h1>
 
-Title: <%= @song.title %>
+Title: <%= @song.title %> <br>
+
+Artist: <%=Artist.find_by_id(@song.artist).name %><br>
+
+Genre: <%=Genre.find_by_id(@song.genre).name %><br>
+
+
+
+
+
+
+
